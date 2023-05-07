@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Word Character Counter</title>
+	<style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600&display=swap');
+		body{
+			background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('bgword.jpg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			box-sizing: border-box;
+			display: flex;
+			padding: 0;
+			margin: 0;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			font-family: 'Dosis', sans-serif;
+		}
+		h1{
+			font-size: 40px;
+			color: white;
+			font-weight:300;
+			text-align: center;
+		}
+		textarea{
+			height: 300px;
+			width:70%;
+			color: white;
+			background: transparent;
+			border:2px solid white;
+			padding:20px 30px;
+			resize: none;
+			margin: 40px 0px;
+			font-size: 22px;
+			border-radius: 30px 5px 30px 5px;
+			font-family: 'Dosis', sans-serif;
+			transition: 0.3s;
+		}
+		textarea:focus{
+			border:2px solid rgba(255, 255, 255, 0.5);
+			outline: none;
+		}
+		textarea::-webkit-scrollbar {
+			 display: none;
+		}
+		p{
+			font-size: 26px;
+			color: white;
+			text-align: center;
+			font-weight:300;
+		}
+		div{
+			text-align: center;
+			width: 70%;
+		}
+		@media(max-width:1100px){
+			textarea{
+				width:85%;
+				padding: 30px 10px;
+			}
+		}
+		@media(max-width:778px){
+			div{
+				width: 90%;
+			}
+			h1{
+				font-size: 32px;
+			}
+			p{
+				font-size: 21px;
+			}
+		}
+		@media(max-height:650px){
+			textarea{
+				height: 200px;
+				margin: 30px 0px;
+			}
+		}
+	</style>
+</head>
+<body>
+   
+  <div>
+	<h1>Word & Character Counter</h1>
+	<textarea id="textbox"></textarea>
+	<p>
+		<span id="word">0</span> Words &
+		<span id="char">0</span> Characters you have written.
+	</p>
+  </div>
+
+  <script>
+  	let textbox = document.getElementById("textbox");
+  	textbox.addEventListener("input", function(){
+
+  		// For Character conunter -------------
+
+  		let text = this.value;
+  		document.getElementById("char").innerHTML = text.length;
+
+  		// FOr Word Counter ----------------
+      
+      text = text.trim(); // Remove spaces form start and end of the line -------
+      let word = text.split(" ");
+      let cleanList = word.filter(function(elm){ // Remove spaces form between of the line -------
+         return elm != "";
+      });
+      document.getElementById("word").innerHTML = cleanList.length;
+  	});
+  </script>
+
+</body>
+</html>
